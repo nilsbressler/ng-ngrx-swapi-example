@@ -1,4 +1,4 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 
 /**
  * Interface representing a Planet entity.
@@ -17,6 +17,16 @@ export interface PlanetEntity {
   distance: number;
 }
 
+export function isPlanetEntity(obj: any): obj is PlanetEntity {
+  return (
+    typeof obj.id === "number" &&
+    typeof obj.name === "string" &&
+    typeof obj.size === "string" &&
+    typeof obj.population === "number" &&
+    typeof obj.distance === "number"
+  );
+}
+
 /**
  * Interface representing the state of planets which extends EntityState.
  */
@@ -32,5 +42,5 @@ export const planetsAdapter: EntityAdapter<PlanetEntity> =
  * Initial state for planets.
  */
 export const initialPlanetsState: PlanetsState = planetsAdapter.getInitialState(
-  {}
+  {},
 );
