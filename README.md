@@ -14,6 +14,7 @@ This repository contains an Angular application demonstrating the usage of NGRX 
    The application will be running at http://localhost:4200/.
 
 ## NgRx Integration for Planet Data Management Using SWAPI API
+
 This project demonstrates the use of NgRx for state management in an Angular application. It integrates with the Star Wars API (SWAPI) to fetch and manage data about planets.
 
 ### The key features include:
@@ -25,6 +26,7 @@ This project demonstrates the use of NgRx for state management in an Angular app
 **Actions and Reducers:** Defines a set of actions to fetch planet data and update the state accordingly, along with reducers to handle these actions.
 
 ### Components
+
 **planet.state.ts**<br>
 Defines the structure of the planet entities and the initial state.
 

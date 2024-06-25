@@ -4,7 +4,8 @@
     <div
       *ngFor="let planet of planetsList"
       (click)="onPlanetClick(planet.id)"
-      class="planet-item">
+      class="planet-item"
+    >
       <h2>{{ planet.name }}</h2>
     </div>
   </div>
