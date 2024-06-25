@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.planet-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Abstand zwischen den Elementen */
+}
+
+.planet-item {
+  flex: 1 1 calc(33.333% - 10px);
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.planet-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+  color: white;
+}

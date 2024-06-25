@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Planets:</h1>
+  <div *ngIf="planetsList$ | async as planetsList" class="planet-grid">
+    <div
+      *ngFor="let planet of planetsList"
+      (click)="onPlanetClick(planet.id)"
+      class="planet-item">
+      <h2>{{ planet.name }}</h2>
+    </div>
+  </div>
+</div>
