@@ -2,14 +2,14 @@ import {
   ApplicationConfig,
   importProvidersFrom,
   isDevMode,
-} from "@angular/core";
-import { provideRouter } from "@angular/router";
+} from '@angular/core';
+import { provideRouter } from '@angular/router';
 
-import { routes } from "./app.routes";
-import { combineReducers, StoreModule } from "@ngrx/store";
-import { EffectsModule } from "@ngrx/effects";
-import { provideStoreDevtools } from "@ngrx/store-devtools";
-import { HttpClientModule } from "@angular/common/http";
+import { routes } from './app.routes';
+import { combineReducers, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
 
 const reducers = combineReducers({});
 export const appConfig: ApplicationConfig = {

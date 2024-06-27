@@ -1,18 +1,18 @@
-import { Component } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { select, Store } from "@ngrx/store";
-import { PlanetEntity, PlanetsState } from "../../store/planets.state";
-import { selectPlanetById } from "../../store/selectors/planets.selectors";
-import { fetchPlanetsResultsAction } from "../../store/actions/planets.actions";
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { PlanetEntity, PlanetsState } from '../../store/planets.state';
+import { selectPlanetById } from '../../store/selectors/planets.selectors';
+import { fetchPlanetsResultsAction } from '../../store/actions/planets.actions';
 
 /**
  * Component for displaying the details of a single planet.
  */
 @Component({
-  selector: "app-planet-detail",
-  templateUrl: "./planet-detail.component.html",
-  styleUrls: ["./planet-detail.component.scss"],
+  selector: 'app-planet-detail',
+  templateUrl: './planet-detail.component.html',
+  styleUrls: ['./planet-detail.component.scss'],
 })
 export class PlanetDetailComponent {
   planet$: Observable<PlanetEntity | undefined>;
@@ -24,11 +24,11 @@ export class PlanetDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store<PlanetsState>,
+    private store: Store<PlanetsState>
   ) {
-    const id = parseInt(this.route.snapshot.paramMap.get("id") || "0", 10);
+    const id = parseInt(this.route.snapshot.paramMap.get('id') || '0', 10);
     this.planet$ = this.store.pipe(select(selectPlanetById(id)));
-    this.planet$.subscribe((planet) => {
+    this.planet$.subscribe(planet => {
       if (!planet) {
         this.store.dispatch(fetchPlanetsResultsAction());
       }
@@ -39,6 +39,6 @@ export class PlanetDetailComponent {
    * Navigates back to the planets list.
    */
   goBack(): void {
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 }

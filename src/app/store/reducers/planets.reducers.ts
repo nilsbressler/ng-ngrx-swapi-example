@@ -1,6 +1,6 @@
-import { createReducer, on } from "@ngrx/store";
-import { initialPlanetsState, planetsAdapter } from "../planets.state";
-import * as PlanetsActions from "../actions/planets.actions";
+import { createReducer, on } from '@ngrx/store';
+import { initialPlanetsState, planetsAdapter } from '../planets.state';
+import * as PlanetsActions from '../actions/planets.actions';
 
 /**
  * Reducer for handling planets state changes.
@@ -12,5 +12,5 @@ export const planetsReducer = createReducer(
   }),
   on(PlanetsActions.fetchPlanetsResultsFailureAction, (state, { error }) => {
     return { ...state, error };
-  }),
+  })
 );

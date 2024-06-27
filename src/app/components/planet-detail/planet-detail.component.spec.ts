@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlanetDetailComponent } from "./planet-detail.component";
+import { PlanetDetailComponent } from './planet-detail.component';
 
-describe("PlanetDetailComponent", () => {
+describe('PlanetDetailComponent', () => {
   let component: PlanetDetailComponent;
   let fixture: ComponentFixture<PlanetDetailComponent>;
 
@@ -16,7 +16,7 @@ describe("PlanetDetailComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

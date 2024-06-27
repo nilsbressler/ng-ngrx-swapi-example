@@ -1,25 +1,25 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   isPlanetEntity,
   PlanetEntity,
   PlanetsState,
-} from "../../store/planets.state";
-import { Observable, tap } from "rxjs";
-import { select, Store } from "@ngrx/store";
-import { fetchPlanetsResultsAction } from "../../store/actions/planets.actions";
-import { Router } from "@angular/router";
+} from '../../store/planets.state';
+import { Observable, tap } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { fetchPlanetsResultsAction } from '../../store/actions/planets.actions';
+import { Router } from '@angular/router';
 import {
   selectAllPlanets,
   selectPlanetsLoaded,
-} from "../../store/selectors/planets.selectors";
+} from '../../store/selectors/planets.selectors';
 
 /**
  * Component for displaying a list of planets.
  */
 @Component({
-  selector: "app-planets-list",
-  templateUrl: "./planets-list.component.html",
-  styleUrls: ["./planets-list.component.scss"],
+  selector: 'app-planets-list',
+  templateUrl: './planets-list.component.html',
+  styleUrls: ['./planets-list.component.scss'],
 })
 export class PlanetsListComponent implements OnInit {
   planetsList$: Observable<Array<PlanetEntity>>;
@@ -27,7 +27,7 @@ export class PlanetsListComponent implements OnInit {
 
   constructor(
     private store: Store<PlanetsState>,
-    private router: Router,
+    private router: Router
   ) {
     this.planetsList$ = this.store.pipe(select(selectAllPlanets));
     this.planetsLoaded$ = this.store.pipe(select(selectPlanetsLoaded));
@@ -39,26 +39,26 @@ export class PlanetsListComponent implements OnInit {
   ngOnInit(): void {
     this.planetsLoaded$
       .pipe(
-        tap((loaded) => {
+        tap(loaded => {
           if (!loaded) {
             this.store.dispatch(fetchPlanetsResultsAction());
           }
-        }),
+        })
       )
       .subscribe();
 
     // Ensure each planet in the planetsList$ observable conforms to the PlanetEntity interface.
     this.planetsList$
       .pipe(
-        tap((planets) => {
-          planets.forEach((planet) => {
+        tap(planets => {
+          planets.forEach(planet => {
             // Validate if each planet is a valid PlanetEntity
             if (!isPlanetEntity(planet)) {
               // Log an error message to the console for any invalid PlanetEntity object found
-              console.error("Invalid PlanetEntity object:", planet);
+              console.error('Invalid PlanetEntity object:', planet);
             }
           });
-        }),
+        })
       )
       .subscribe();
   }
@@ -69,6 +69,6 @@ export class PlanetsListComponent implements OnInit {
    * @param {number} id - The ID of the clicked planet.
    */
   onPlanetClick(id: number) {
-    this.router.navigate(["/planet", id]);
+    this.router.navigate(['/planet', id]);
   }
 }

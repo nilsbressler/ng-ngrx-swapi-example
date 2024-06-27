@@ -1,11 +1,11 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { PlanetEntity, PlanetsState } from "../planets.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { PlanetEntity, PlanetsState } from '../planets.state';
 
 /**
  * Selector to get the planets state.
  */
 export const selectPlanetsState =
-  createFeatureSelector<PlanetsState>("planets");
+  createFeatureSelector<PlanetsState>('planets');
 
 /**
  * Selector to get all planets.
@@ -16,8 +16,8 @@ export const selectAllPlanets = createSelector(
   selectPlanetsState,
   (state: PlanetsState) =>
     Object.values(state.entities).filter(
-      (planet): planet is PlanetEntity => !!planet,
-    ),
+      (planet): planet is PlanetEntity => !!planet
+    )
 );
 
 /**
@@ -27,8 +27,8 @@ export const selectAllPlanets = createSelector(
  * @returns {PlanetEntity | undefined} - The planet with the given ID or undefined if not found.
  */
 export const selectPlanetById = (id: number) =>
-  createSelector(selectAllPlanets, (planets) =>
-    planets.find((planet) => planet?.id === id),
+  createSelector(selectAllPlanets, planets =>
+    planets.find(planet => planet?.id === id)
   );
 
 /**
@@ -38,5 +38,5 @@ export const selectPlanetById = (id: number) =>
  */
 export const selectPlanetsLoaded = createSelector(
   selectPlanetsState,
-  (state: PlanetsState) => Object.keys(state.entities).length > 0,
+  (state: PlanetsState) => Object.keys(state.entities).length > 0
 );
